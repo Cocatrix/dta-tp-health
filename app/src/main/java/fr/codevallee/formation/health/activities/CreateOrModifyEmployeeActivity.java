@@ -1,4 +1,4 @@
-package fr.codevallee.formation.health;
+package fr.codevallee.formation.health.activities;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -18,8 +17,16 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateEmployeeActivity extends AppCompatActivity {
-    // TODO - Check if getApplicationContext works here
+import fr.codevallee.formation.health.databases.Employee;
+import fr.codevallee.formation.health.databases.EmployeeDataSource;
+import fr.codevallee.formation.health.R;
+
+/**
+ * @author Maxime REVEL
+ * @date 19/10/2017
+ */
+
+public class CreateOrModifyEmployeeActivity extends AppCompatActivity {
     private EmployeeDataSource employeeDataSource;
 
     private static final String COL_FAMILY_NAME = "family_name";
@@ -43,7 +50,7 @@ public class CreateEmployeeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_or_modify_employee);
-        employeeDataSource = new EmployeeDataSource(getApplicationContext());
+        employeeDataSource = EmployeeDataSource.getDS(this.getApplicationContext());
 
         // Set views in private fields (because they are used in several methods)
         this.family_nameUI = (EditText) findViewById(R.id.family_name_text);
@@ -62,7 +69,7 @@ public class CreateEmployeeActivity extends AppCompatActivity {
 
         // We need an ArrayAdapter to fill the list of possible autocompletions
         final ArrayAdapter<String> autoCompletionAdapter = new ArrayAdapter<String>(
-                CreateEmployeeActivity.this, android.R.layout.simple_list_item_1,listJobs);
+                CreateOrModifyEmployeeActivity.this, android.R.layout.simple_list_item_1,listJobs);
         AutoCompleteTextView jobsUI = (AutoCompleteTextView) findViewById(R.id.job_auto_complete);
         jobsUI.setAdapter(autoCompletionAdapter);
 
@@ -148,6 +155,10 @@ public class CreateEmployeeActivity extends AppCompatActivity {
                 values.getAsString(COL_PHONE),
                 values.getAsString(COL_CV));
         this.employeeDataSource.getEmployeeDAO().create(newEmployee);
+
+        Intent backToListIntent = new Intent(CreateOrModifyEmployeeActivity.this,
+                ListEmployeesActivity.class);
+        startActivity(backToListIntent);
     }
 
     protected ContentValues getFieldValues() {

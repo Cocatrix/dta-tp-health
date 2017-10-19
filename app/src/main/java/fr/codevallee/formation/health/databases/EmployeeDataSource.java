@@ -1,4 +1,4 @@
-package fr.codevallee.formation.health;
+package fr.codevallee.formation.health.databases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,17 +11,26 @@ import android.database.sqlite.SQLiteDatabase;
 public class EmployeeDataSource {
     /**
      * Class managing the datasource.
-     * It's a database factory AND an EmployeeDAO factory.
+     * It's its own factory.
+     * It's also a database factory AND an EmployeeDAO factory.
      * Method getDB returns the database (after initialising it if needed).
      * Method getEmployeeDAO returns the employeeDAO (after creating it if needed).
      */
+    private static EmployeeDataSource employeeDataSource;
     private final EmployeeDBHelper helper;
     private SQLiteDatabase db;
-
     private EmployeeDAO employeeDAO;
 
     public EmployeeDataSource(Context context) {
         helper = new EmployeeDBHelper(context);
+    }
+
+    // EmployeeDataSource factory
+    public static EmployeeDataSource getDS(Context context) {
+        if (employeeDataSource == null) {
+            employeeDataSource = new EmployeeDataSource(context);
+        }
+        return employeeDataSource;
     }
 
     // Database factory
