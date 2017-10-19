@@ -98,6 +98,7 @@
 
     <Button
         android:id="@+id/create_button"
+        android:tag="create_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -107,6 +108,7 @@
 
     <Button
         android:id="@+id/modify_button"
+        android:tag="modify_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

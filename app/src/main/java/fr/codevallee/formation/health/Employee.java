@@ -1,13 +1,17 @@
 package fr.codevallee.formation.health;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * @author Maxime REVEL
  * @date 19/10/2017
  */
 
-public class Employee {
+public class Employee implements Parcelable {
     /**
      * Java instance of an employee (got from database).
+     * Parcelable to put it into Intents.
      */
     private Integer id;
     private String familyName;
@@ -116,5 +120,51 @@ public class Employee {
         this.email = email;
         this.phone = phone;
         this.CV = CV;
+    }
+
+    public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+        @Override
+        public Employee createFromParcel(Parcel in) {
+            return new Employee(in);
+        }
+
+        @Override
+        public Employee[] newArray(int size) {
+            return new Employee[size];
+        }
+    };
+
+    protected Employee(Parcel in) {
+        readFromParcel(in);
+    }
+
+    protected void readFromParcel(Parcel in) {
+        this.id = in.readInt();
+        this.familyName = in.readString();
+        this.firstName = in.readString();
+        this.gender = in.readString();
+        this.job = in.readString();
+        this.service = in.readString();
+        this.email = in.readString();
+        this.phone = in.readString();
+        this.CV = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 9;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(familyName);
+        dest.writeString(firstName);
+        dest.writeString(gender);
+        dest.writeString(job);
+        dest.writeString(service);
+        dest.writeString(email);
+        dest.writeString(phone);
+        dest.writeString(CV);
     }
 }

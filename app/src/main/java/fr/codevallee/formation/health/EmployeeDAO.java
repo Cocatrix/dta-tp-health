@@ -10,7 +10,7 @@ import android.content.ContentValues;
 class EmployeeDAO {
     private static final String TABLE_NAME = "Employee";
     private static final String COL_ID = "id";
-    private static final String COL_FAMILY_NAME = "family_name_hint";
+    private static final String COL_FAMILY_NAME = "family_name";
     private static final String COL_FIRST_NAME = "first_name";
     private static final String COL_GENDER = "gender";
     private static final String COL_JOB = "job";
@@ -41,6 +41,11 @@ class EmployeeDAO {
         // Processing insert request
         Integer id = (int) employeeDataSource.getDB().insert(TABLE_NAME,null,values);
         employee.setId(id);
+        return employee;
+    }
+
+    public synchronized Employee update(Employee employee) {
+        // TODO
         return employee;
     }
 }
