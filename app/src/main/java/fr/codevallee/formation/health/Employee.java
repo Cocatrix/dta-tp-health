@@ -9,6 +9,7 @@ public class Employee {
     /**
      * Java instance of an employee (got from database).
      */
+    private Integer id;
     private String familyName;
     private String firstName;
     private String gender;
@@ -21,7 +22,8 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "familyName='" + familyName + '\'' +
+                "id='" + id.toString() + '\'' +
+                ", familyName='" + familyName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", job='" + job + '\'' +
@@ -32,6 +34,13 @@ public class Employee {
                 '}';
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getFamilyName() {
         return familyName;
     }
@@ -96,8 +105,9 @@ public class Employee {
         this.CV = CV;
     }
 
-    public Employee(String familyName, String firstName, String gender, String job, String service,
-                    String email, String phone, String CV) {
+    public Employee(Integer id, String familyName, String firstName, String gender, String job,
+                    String service, String email, String phone, String CV) {
+        this.id = id;
         this.familyName = familyName;
         this.firstName = firstName;
         this.gender = gender;

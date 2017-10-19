@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <EditText
         android:id="@+id/family_name_text"
@@ -23,19 +23,13 @@
         android:hint="@string/first_name_hint"
         android:inputType="textPersonName" />
 
-    <LinearLayout
-        android:id="@+id/gender_linear_layout"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/gender_radio_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:checkedButton="@+id/radio_female"
         android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radio_male"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/gender_m" />
 
         <RadioButton
             android:id="@+id/radio_female"
@@ -45,13 +39,20 @@
             android:text="@string/gender_f" />
 
         <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/gender_m" />
+
+        <RadioButton
             android:id="@+id/radio_other"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/gender_other" />
 
-    </LinearLayout>
+    </RadioGroup>
 
     <AutoCompleteTextView
         android:id="@+id/job_auto_complete"
@@ -66,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="?attr/colorControlHighlight"
-        android:prompt="Choose a service..." />
+        android:entries="@array/services_array"/>
 
     <EditText
         android:id="@+id/email_text"
@@ -100,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:onClick="createEmployee"
         android:text="@string/create_button"
         android:visibility="visible" />
 

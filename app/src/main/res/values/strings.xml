@@ -11,6 +11,16 @@
     <string name="cv_hint">CV (quelques lignes)</string>
     <string name="create_button">Créer</string>
     <string name="modify_button">Modifier</string>
+    <string name="service_prompt">Choisissez un service...</string>
+    <string-array name="services_array">
+        <item>Cardiologie</item>
+        <item>Pédiatrie</item>
+    </string-array>
+    <string-array name="jobs_completion_hint_array">
+        <item>Médecin</item>
+        <item>Pédiatre</item>
+        <item>Infirmier</item>
+    </string-array>
     <!--
     <string name="drop_table_employee_query">DROP TABLE IF EXISTS Employee;</string>
     <string name="create_table_employee_user_query">CREATE TABLE Employee (
