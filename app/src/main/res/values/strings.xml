@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Health</string>
+    <!--
+    <string name="drop_table_employee_query">DROP TABLE IF EXISTS Employee;</string>
+    <string name="create_table_employee_user_query">CREATE TABLE Employee (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+    family_name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(15) NOT NULL,
+    gender VARCHAR(15) NOT NULL,
+    job VARCHAR(60) NOT NULL,
+    service VARCHAR(60) NOT NULL,
+    email VARCHAR(60) NOT NULL,
+    phone VARCHAR(30) NOT NULL,
+    cv VARCHAR(1000) NOT NULL
+);</string>-->
 </resources>
