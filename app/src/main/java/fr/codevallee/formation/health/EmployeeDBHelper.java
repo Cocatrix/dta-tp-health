@@ -36,7 +36,7 @@ public class EmployeeDBHelper extends SQLiteOpenHelper {
         //TODO - return Resources.getSystem().getString(R.string.create_table_employee_query);
         return "CREATE TABLE Employee ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "family_name VARCHAR(30) NOT NULL,"
+                + "family_name_hint VARCHAR(30) NOT NULL,"
                 + "first_name VARCHAR(15) NOT NULL,"
                 + "gender VARCHAR(15) NOT NULL,"
                 + "job VARCHAR(60) NOT NULL,"

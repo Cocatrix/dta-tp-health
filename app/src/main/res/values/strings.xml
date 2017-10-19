@@ -1,10 +1,21 @@
 <resources>
-    <string name="app_name">Health</string>
+    <string name="app_name">Personnel de l\'hôpital</string>
+    <string name="family_name_hint">Nom de famille</string>
+    <string name="first_name_hint">Prénom</string>
+    <string name="gender_m">M</string>
+    <string name="gender_f">F</string>
+    <string name="gender_other">Autre</string>
+    <string name="job_hint">Commencez à taper un métier...</string>
+    <string name="email_hint">E-mail</string>
+    <string name="phone_hint">Téléphone</string>
+    <string name="cv_hint">CV (quelques lignes)</string>
+    <string name="create_button">Créer</string>
+    <string name="modify_button">Modifier</string>
     <!--
     <string name="drop_table_employee_query">DROP TABLE IF EXISTS Employee;</string>
     <string name="create_table_employee_user_query">CREATE TABLE Employee (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-    family_name VARCHAR(30) NOT NULL,
+    family_name_hint VARCHAR(30) NOT NULL,
     first_name VARCHAR(15) NOT NULL,
     gender VARCHAR(15) NOT NULL,
     job VARCHAR(60) NOT NULL,
