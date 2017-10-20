@@ -1,0 +1,39 @@
+package fr.codevallee.formation.health.adapters;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.content.Context;
+
+
+import java.util.List;
+
+import fr.codevallee.formation.health.databases.Employee;
+import fr.codevallee.formation.health.databases.EmployeeDataSource;
+import fr.codevallee.formation.health.fragments.EmployeePagerFragment;
+
+/**
+ * @author Maxime REVEL
+ * @date 20/10/2017
+ */
+
+public class EmployeePagerAdapter extends FragmentPagerAdapter {
+    private EmployeeDataSource employeeDataSource;
+
+    public EmployeePagerAdapter(FragmentManager fm, Context context) {
+        super(fm);
+        this.employeeDataSource = EmployeeDataSource.getDS(context);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        List<Employee> employees = this.employeeDataSource.getEmployeeDAO().readAll();
+        return EmployeePagerFragment.newInstance(employees.get(position));
+    }
+
+    @Override
+    public int getCount() {
+        List<Employee> employees = this.employeeDataSource.getEmployeeDAO().readAll();
+        return employees.size();
+    }
+}
