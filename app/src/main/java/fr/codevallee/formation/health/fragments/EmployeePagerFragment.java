@@ -19,10 +19,12 @@ import fr.codevallee.formation.health.databases.Employee;
  */
 
 public class EmployeePagerFragment extends Fragment {
+    private static final String PARCEL_EMPLOYEE_TAG = "pagerEmployee";
+
     public static EmployeePagerFragment newInstance(Employee employee) {
         EmployeePagerFragment frag = new EmployeePagerFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("pagerEmployee",employee);
+        bundle.putParcelable(PARCEL_EMPLOYEE_TAG,employee);
         frag.setArguments(bundle);
         return frag;
     }
@@ -31,7 +33,7 @@ public class EmployeePagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("ACTION","");
         View view = inflater.inflate(R.layout.fragment_pager_employee, container, false);
-        Employee employee = getArguments().getParcelable("pagerEmployee");
+        Employee employee = getArguments().getParcelable(PARCEL_EMPLOYEE_TAG);
         assert employee != null;
         // Set the right button for gender
         Button genderButton1 = view.findViewById(R.id.radio_female_view);

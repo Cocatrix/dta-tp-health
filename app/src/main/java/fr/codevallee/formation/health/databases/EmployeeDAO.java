@@ -12,6 +12,9 @@ import java.util.List;
  */
 
 public class EmployeeDAO {
+    /**
+     * Allows to access data and store it in Employee instances.
+     */
     private static final String TABLE_NAME = "Employee";
     private static final String COL_ID = "id";
     private static final String COL_FAMILY_NAME = "family_name";
@@ -30,7 +33,7 @@ public class EmployeeDAO {
         this.employeeDataSource = employeeDataSource;
     }
 
-    // TODO - public synchronized [CRUD]
+    // TODO - check update and delete methods
 
     public synchronized Employee create(Employee employee) {
         ContentValues values = new ContentValues();

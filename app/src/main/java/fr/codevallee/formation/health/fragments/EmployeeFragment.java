@@ -3,6 +3,7 @@ package fr.codevallee.formation.health.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,9 @@ import fr.codevallee.formation.health.listeners.ViewPagerOnPageChangeListener;
  */
 
 public class EmployeeFragment extends Fragment {
+    /**
+     * Fragment of one employee displayed.
+     */
     public final static String ARG_POSITION = "position";
     private int currentPosition = -1;
     private ViewPager pager;
@@ -28,9 +32,9 @@ public class EmployeeFragment extends Fragment {
         if (savedInstanceState != null) {
             currentPosition = savedInstanceState.getInt(ARG_POSITION);
         }
-
+        Log.d("ACTION","Creating new EmployeeFragment");
         View view = inflater.inflate(R.layout.fragment_employee, container, false);
-        pager = (ViewPager) view.findViewById(R.id.viewPager);
+        pager = view.findViewById(R.id.viewPager);
         pager.setAdapter(new EmployeePagerAdapter(getChildFragmentManager(),getContext()));
         pager.setCurrentItem(currentPosition);
 

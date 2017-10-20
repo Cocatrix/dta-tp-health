@@ -2,8 +2,10 @@ package fr.codevallee.formation.health.adapters;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,9 @@ import fr.codevallee.formation.health.fragments.ListEmployeesFragment;
 
 public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
         EmployeesRecyclerViewAdapter.ViewHolder> {
+    /**
+     * Custom Adapter for RecyclerView.
+     */
     private int selectedItem;
     private ListEmployeesFragment listEmployeesFragment;
     private EmployeeDataSource employeeDataSource;
@@ -36,16 +41,21 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
     }
 
     public void setSelectedItem(int selectedItem) {
+        Log.d("ACTION","Set the item " + String.valueOf(selectedItem));
         notifyItemChanged(this.selectedItem);
         this.selectedItem = selectedItem;
         notifyItemChanged(this.selectedItem);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        /**
+         * Our own ViewHolder.
+         */
         public TextView textView;
         public View itemView;
 
         public ViewHolder(View itemView) {
+            // Now just setting one TextView.
             super(itemView);
             this.itemView = itemView;
             this.textView = (TextView) itemView.findViewById(R.id.employeeName);
@@ -67,6 +77,10 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(EmployeesRecyclerViewAdapter.ViewHolder holder,
                                  final int position) {
+        /**
+         * No onItemClickListener for RecyclerView, we do that instead.
+         * Setting holder.TextView, then affect actions after clicking.
+         */
         List<Employee> employees = this.employeeDataSource.getEmployeeDAO().readAll();
         String name = employees.get(position).getFirstName() + " "
                 + employees.get(position).getFamilyName();
@@ -75,6 +89,7 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("ACTION","Clicked on item " + position);
                 EmployeeFragment articleFrag = (EmployeeFragment)
                         listEmployeesFragment.getFragmentManager().findFragmentById(R.id.fragPagerEmployee);
 
@@ -91,11 +106,20 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
-
+                Log.d("STATE","Refreshed after clicking on item " + position);
                 setSelectedItem(position);
 
             }
         });
+
+        holder.itemView.setTag(holder);
+        // Highlighting...
+        holder.itemView.setSelected(position == selectedItem);
+        if (selectedItem == position) {
+            holder.itemView.setBackgroundColor(Color.GREEN);
+        } else {
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 
     @Override
@@ -103,52 +127,4 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
         return this.employeeDataSource.getEmployeeDAO().readAll().size();
     }
 }
-/*
-    private UsersListFragment usersListFragment;
 
-    public RecyclerViewAdapter(UsersListFragment usersListFragment) {
-        this.usersListFragment = usersListFragment;
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, final int position) {
-
-        holder.mContentView.setText(DataBase.users.get(position).getName());
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                UserFragment articleFrag = (UserFragment)
-                        usersListFragment.getFragmentManager().findFragmentById(R.id.article_fragment);
-
-                if (articleFrag != null) {
-                    articleFrag.updateArticleView(position);
-
-                } else {
-                    UserFragment newFragment = new UserFragment();
-                    Bundle args = new Bundle();
-                    args.putInt(UserFragment.ARG_POSITION, position);
-                    newFragment.setArguments(args);
-                    FragmentTransaction transaction = usersListFragment.getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragment_container, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-
-                setSelectedItem(position);
-            }
-        });
-
-        holder.mView.setTag(holder);
-        // Gestion de la surbrillance.
-        holder.itemView.setSelected(position == selectedItem);
-        if (selectedItem == position) {
-            holder.itemView.setBackgroundColor(Color.GREEN);
-        } else {
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-        }
-
-    }
-
-}*/

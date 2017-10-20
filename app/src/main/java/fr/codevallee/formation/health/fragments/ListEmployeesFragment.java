@@ -22,6 +22,11 @@ import fr.codevallee.formation.health.databases.EmployeeDataSource;
  */
 
 public class ListEmployeesFragment extends Fragment {
+    /**
+     * This class is a fragment managing the RecyclerView that displays employee's cards.
+     * Adds a LayoutManager to the RecyclerView, and a custom adapter.
+     */
+
     private List<Employee> employees;
     private EmployeeDataSource employeeDataSource;
 
@@ -42,12 +47,14 @@ public class ListEmployeesFragment extends Fragment {
 
         this.employeesRecyclerView = view.findViewById(R.id.employees_recycler_view);
         this.eRVLayoutManager = new LinearLayoutManager(view.getContext());
+        Log.d("ACTION","Add LayoutManager to fragment of employees' list");
         this.employeesRecyclerView.setLayoutManager(eRVLayoutManager);
 
         this.employees = employeeDataSource.getEmployeeDAO().readAll();
         Log.d("VALUE", "Employees length : " + this.employees.size());
 
         this.eRVAdapter = new EmployeesRecyclerViewAdapter(this,getContext());
+        Log.d("ACTION","Add custom adapter for fragment of employees' list");
         this.employeesRecyclerView.setAdapter(this.eRVAdapter);
 
         return view;
