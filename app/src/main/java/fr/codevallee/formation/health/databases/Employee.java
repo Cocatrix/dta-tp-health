@@ -1,4 +1,4 @@
-package fr.codevallee.formation.health;
+package fr.codevallee.formation.health.databases;
 
 import android.os.Parcel;
 import android.os.Parcelable;

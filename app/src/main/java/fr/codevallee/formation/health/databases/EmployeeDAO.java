@@ -1,4 +1,4 @@
-package fr.codevallee.formation.health;
+package fr.codevallee.formation.health.databases;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -11,7 +11,7 @@ import java.util.List;
  * @date 19/10/2017
  */
 
-class EmployeeDAO {
+public class EmployeeDAO {
     private static final String TABLE_NAME = "Employee";
     private static final String COL_ID = "id";
     private static final String COL_FAMILY_NAME = "family_name";
