@@ -9,7 +9,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_employee_fab"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
@@ -22,18 +22,18 @@
         android:id="@+id/fragListEmployees"
         android:name="fr.codevallee.formation.health.fragments.ListEmployeesFragment"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal"
         tools:layout="@layout/fragment_list_employees" />
 
     <fragment
-        android:id="@+id/fragPagerEmployee"
-        android:name="fr.codevallee.formation.health.fragments.EmployeePagerFragment"
+        android:id="@+id/fragEmployee"
+        android:name="fr.codevallee.formation.health.fragments.EmployeeFragment"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="horizontal"
-        tools:layout="@layout/fragment_pager_employee" />
+        tools:layout="@layout/fragment_employee" />
 
 </LinearLayout>

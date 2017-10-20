@@ -90,35 +90,26 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
             @Override
             public void onClick(View v) {
                 Log.d("ACTION","Clicked on item " + position);
-                if (v.findViewById(R.id.frag_container) != null) {
-                    EmployeeFragment articleFrag = (EmployeeFragment)
-                            listEmployeesFragment.getFragmentManager().findFragmentById(R.id.fragPagerEmployee);
 
-                    if (articleFrag != null) {
-                        articleFrag.updateArticleView(position);
+                EmployeeFragment articleFrag = (EmployeeFragment)
+                        listEmployeesFragment.getFragmentManager().findFragmentById(R.id.fragEmployee);
 
-                    } else {
-                        EmployeeFragment newFragment = new EmployeeFragment();
-                        Bundle args = new Bundle();
-                        args.putInt(EmployeeFragment.ARG_POSITION, position);
-                        newFragment.setArguments(args);
-                        FragmentTransaction transaction = listEmployeesFragment.getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frag_container, newFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
-                    }
-                    Log.d("STATE", "Refreshed after clicking on item " + position);
-                    setSelectedItem(position);
+                if (articleFrag != null) {
+                    articleFrag.updateArticleView(position);
+
                 } else {
                     EmployeeFragment newFragment = new EmployeeFragment();
                     Bundle args = new Bundle();
                     args.putInt(EmployeeFragment.ARG_POSITION, position);
                     newFragment.setArguments(args);
                     FragmentTransaction transaction = listEmployeesFragment.getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragPagerEmployee, newFragment);
+                    transaction.replace(R.id.frag_container, newFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
+                Log.d("STATE", "Refreshed after clicking on item " + position);
+                setSelectedItem(position);
+
             }
         });
 
