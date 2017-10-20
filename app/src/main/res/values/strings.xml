@@ -12,6 +12,7 @@
     <string name="create_button">Créer</string>
     <string name="modify_button">Modifier</string>
     <string name="service_prompt">Choisissez un service...</string>
+    <string name="back">Retour</string>
     <string-array name="services_array">
         <item>Cardiologie</item>
         <item>Pédiatrie</item>
