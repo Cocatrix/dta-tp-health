@@ -11,6 +11,10 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /**
+         * Does nothing for now, goes to next screen
+         * TODO - Put UX on this screen
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 

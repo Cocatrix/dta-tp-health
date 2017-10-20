@@ -18,7 +18,6 @@
         </activity>
         <activity android:name=".activities.CreateOrModifyEmployeeActivity" />
         <activity android:name=".activities.ListEmployeesActivity" />
-        <activity android:name=".activities.ShowEmployeeActivity"></activity>
     </application>
 
 </manifest>
