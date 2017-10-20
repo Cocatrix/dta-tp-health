@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import fr.codevallee.formation.health.R;
+import fr.codevallee.formation.health.fragments.ListEmployeesFragment;
+
+/**
+ * @author Maxime REVEL
+ * @date 20/10/2017
+ */
 
 public class ListEmployeesActivity extends AppCompatActivity {
 
@@ -24,6 +30,16 @@ public class ListEmployeesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if (findViewById(R.id.frag_container) != null) {
+            if (savedInstanceState != null) {
+                return;
+            }
+            // On small screen :
+            ListEmployeesFragment employeeList = new ListEmployeesFragment();
+            employeeList.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction().add(R.id.frag_container, employeeList).commit();
+        }
 
     }
 }

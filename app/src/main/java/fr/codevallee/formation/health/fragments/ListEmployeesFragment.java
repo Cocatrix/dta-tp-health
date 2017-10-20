@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import fr.codevallee.formation.health.EmployeesRecyclerViewAdapter;
+import fr.codevallee.formation.health.adapters.EmployeesRecyclerViewAdapter;
 import fr.codevallee.formation.health.R;
 import fr.codevallee.formation.health.databases.Employee;
 import fr.codevallee.formation.health.databases.EmployeeDataSource;
@@ -47,9 +47,13 @@ public class ListEmployeesFragment extends Fragment {
         this.employees = employeeDataSource.getEmployeeDAO().readAll();
         Log.d("VALUE", "Employees length : " + this.employees.size());
 
-        this.eRVAdapter = new EmployeesRecyclerViewAdapter(this.employees);
+        this.eRVAdapter = new EmployeesRecyclerViewAdapter(this,getContext());
         this.employeesRecyclerView.setAdapter(this.eRVAdapter);
 
         return view;
+    }
+
+    public RecyclerView.Adapter getAdapter() {
+        return eRVAdapter;
     }
 }

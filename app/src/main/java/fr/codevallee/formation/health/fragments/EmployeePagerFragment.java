@@ -30,7 +30,7 @@ public class EmployeePagerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("ACTION","");
-        View view = inflater.inflate(R.layout.pager_employee, container, false);
+        View view = inflater.inflate(R.layout.fragment_pager_employee, container, false);
         Employee employee = getArguments().getParcelable("pagerEmployee");
         assert employee != null;
         // Set the right button for gender

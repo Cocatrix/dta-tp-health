@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/largeFragmentContainer">
+
+    <fragment
+        android:id="@+id/fragListEmployees"
+        android:name="fr.codevallee.formation.health.fragments.ListEmployeesFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        tools:layout="@layout/fragment_list_employees" />
+
+    <fragment
+        android:id="@+id/fragPagerEmployee"
+        android:name="fr.codevallee.formation.health.fragments.EmployeePagerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        tools:layout="@layout/fragment_pager_employee" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_employee_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="@color/cardview_light_background"
+        app:backgroundTint="@color/colorPrimary" />
+
+</LinearLayout>
