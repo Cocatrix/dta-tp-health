@@ -117,7 +117,7 @@ public class EmployeesRecyclerViewAdapter extends RecyclerView.Adapter<
         // Highlighting...
         holder.itemView.setSelected(position == selectedItem);
         if (selectedItem == position) {
-            holder.itemView.setBackgroundColor(Color.GREEN);
+            holder.itemView.setBackgroundColor(Color.LTGRAY);
         } else {
             holder.itemView.setBackgroundColor(Color.TRANSPARENT);
         }
