@@ -1,6 +1,7 @@
 package fr.codevallee.formation.health.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import fr.codevallee.formation.health.R;
+import fr.codevallee.formation.health.activities.ListEmployeesActivity;
 import fr.codevallee.formation.health.databases.Employee;
 
 /**
@@ -87,7 +89,17 @@ public class EmployeePagerFragment extends Fragment {
             // Show the button
             Button backButton = view.findViewById(R.id.pager_back_button);
             backButton.setVisibility(View.VISIBLE);
+
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent goListIntent = new Intent(getActivity(), ListEmployeesActivity.class);
+                    startActivity(goListIntent);
+                }
+            });
         }
         return view;
     }
+
+
 }

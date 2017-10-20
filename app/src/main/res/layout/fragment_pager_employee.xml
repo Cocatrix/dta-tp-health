@@ -98,8 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="goBack"
-        android:tag="create_button"
+        android:tag="back_button"
         android:text="@string/back"
         android:visibility="invisible" />
 
