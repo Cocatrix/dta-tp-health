@@ -41,6 +41,18 @@ public class EmployeeFragment extends Fragment {
         employeeList = (ListEmployeesFragment) getFragmentManager().findFragmentById(R.id.fragListEmployees);
 
         pager.addOnPageChangeListener(new ViewPagerOnPageChangeListener(employeeList));
+        
+        ImageButton modify_button = view.findViewById(R.id.image_modify_button);
+        modify_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("ACTION","Modify button");
+                Intent modifyIntent = new Intent(this,CreateOrModifyActivity.class);
+                modifyIntent.putExtra("whichEmployee", );
+                startActivity(modifyIntent);
+            }
+        });
+
 
         return view;
     }
